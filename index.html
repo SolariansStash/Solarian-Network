@@ -299,6 +299,8 @@ class Component extends DCLogic {
     return (e) => {
       if (e) e.preventDefault();
       document.body.style.overflow = 'hidden';
+      const hv = this._hv;
+      if (hv) { this._hvWasPlaying = !hv.paused; hv.pause(); }
       this.setState({ video: { id, title } });
     };
   }
@@ -306,6 +308,9 @@ class Component extends DCLogic {
   close = (e) => {
     if (e) e.preventDefault();
     document.body.style.overflow = '';
+    const hv = this._hv;
+    if (hv && this._hvWasPlaying) { hv.muted = !this.state.soundOn; const p = hv.play(); if (p && p.catch) p.catch(() => {}); }
+    this._hvWasPlaying = false;
     this.setState({ video: null });
   };
 
