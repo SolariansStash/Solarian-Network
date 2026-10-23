@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&family=Chakra+Petch:wght@600;700&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+<style>
+  html, body { margin:0; padding:0; background:#05090b; color:#e8ecf8; font-family:'Space Grotesk', Helvetica, sans-serif; -webkit-font-smoothing:antialiased; }
+  * { box-sizing:border-box; }
+  a { color:#7fd4e0; text-decoration:none; }
+  a:hover { color:#ffffff; }
+  ::selection { background:#e01e37; color:#fff; }
+  @keyframes titleSheen { 0% { background-position:0% 50%; } 100% { background-position:200% 50%; } }
+  @keyframes drift { from { transform:translate3d(0,0,0); } to { transform:translate3d(0,-800px,0); } }
+  @keyframes orbspin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+  @keyframes breathe { 0%,100% { opacity:.55; transform:scale(1); } 50% { opacity:.9; transform:scale(1.06); } }
+  @keyframes marq { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  @keyframes nebA { 0%,100% { transform:translate3d(0,0,0) scale(1); opacity:.75; } 50% { transform:translate3d(6vw,-4vh,0) scale(1.18); opacity:1; } }
+  @keyframes nebB { 0%,100% { transform:translate3d(0,0,0) scale(1.1); opacity:.6; } 50% { transform:translate3d(-7vw,5vh,0) scale(.92); opacity:.95; } }
+  @keyframes nebC { 0%,100% { transform:translate3d(0,0,0) scale(.95); opacity:.5; } 50% { transform:translate3d(4vw,6vh,0) scale(1.15); opacity:.85; } }
+  @keyframes galSpin { from { transform:rotate(0deg); } to { transform:rotate(360deg); } }
+  @keyframes gridMove { from { background-position:0 0, 0 0; } to { background-position:0 80px, 0 0; } }
+  @keyframes driftSlow { from { transform:translate3d(0,0,0); } to { transform:translate3d(0,-600px,0); } }
+  @keyframes streak { 0% { transform:translateX(-30vw); opacity:0; } 10% { opacity:1; } 60% { opacity:1; } 100% { transform:translateX(130vw); opacity:0; } }
+  @keyframes horizonPulse { 0%,100% { opacity:.55; } 50% { opacity:1; } }
+  @keyframes ringSpin { from { transform:translate(-50%,-50%) rotateX(74deg) rotate(0deg); } to { transform:translate(-50%,-50%) rotateX(74deg) rotate(360deg); } }
+  @keyframes starPulse { 0%,100% { transform:translate(-50%,-50%) scale(1); opacity:.92; } 50% { transform:translate(-50%,-50%) scale(1.08); opacity:1; } }
+  @keyframes flareShift { 0%,100% { transform:translate3d(0,0,0); opacity:.85; } 50% { transform:translate3d(1.2vw,.6vh,0); opacity:1; } }
+  @keyframes galFloat { 0%,100% { transform:translate3d(0,0,0) scale(1); } 50% { transform:translate3d(0,-3vh,0) scale(1.08); } }
+</style>
+</helmet>
+
+<div style="position:relative; min-height:100vh; overflow-x:hidden; background:radial-gradient(120% 80% at 50% -10%, #0f2a30 0%, #071317 38%, #05090b 78%);">
+
+  <div aria-hidden="true" style="position:fixed; inset:0; pointer-events:none; overflow:hidden; opacity:{{ cosmosOpacity }}; mix-blend-mode:screen;">
+    <div style="position:absolute; left:-12vw; top:8vh; width:62vw; height:52vw; border-radius:50%; background:radial-gradient(closest-side, rgba(224,30,55,.42), rgba(224,30,55,.12) 55%, rgba(224,30,55,0)); filter:blur(40px); animation:nebA 38s ease-in-out infinite;"></div>
+    <div style="position:absolute; right:-14vw; top:34vh; width:58vw; height:46vw; border-radius:50%; background:radial-gradient(closest-side, rgba(63,216,255,.30), rgba(63,216,255,.08) 55%, rgba(63,216,255,0)); filter:blur(46px); animation:nebB 46s ease-in-out infinite;"></div>
+    <div style="position:absolute; left:18vw; bottom:-18vh; width:56vw; height:40vw; border-radius:50%; background:radial-gradient(closest-side, rgba(255,46,69,.26), rgba(255,46,69,.10) 55%, rgba(255,46,69,0)); filter:blur(50px); animation:nebC 52s ease-in-out infinite;"></div>
+    <div style="position:absolute; right:12vw; top:12vh; width:clamp(140px,16vw,240px); aspect-ratio:1; animation:galFloat 30s ease-in-out infinite;">
+      <div style="position:absolute; inset:0; transform:rotateX(64deg) rotate(-24deg);">
+        <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 0deg, rgba(255,138,149,0), rgba(255,138,149,.55) 12%, rgba(255,138,149,0) 26%, rgba(127,212,224,.45) 50%, rgba(127,212,224,0) 64%, rgba(255,138,149,.35) 82%, rgba(255,138,149,0)); -webkit-mask:radial-gradient(closest-side, #000 20%, rgba(0,0,0,.5) 60%, transparent 100%); mask:radial-gradient(closest-side, #000 20%, rgba(0,0,0,.5) 60%, transparent 100%); filter:blur(3px); animation:galSpin 120s linear infinite;"></div>
+        <div style="position:absolute; inset:38%; border-radius:50%; background:radial-gradient(closest-side, #f4fbfc, rgba(220,240,244,.7) 40%, rgba(200,236,242,0)); filter:blur(2px);"></div>
+      </div>
+    </div>
+    <div style="position:absolute; left:8vw; bottom:16vh; width:clamp(90px,10vw,150px); aspect-ratio:1; opacity:.8; animation:galFloat 36s ease-in-out infinite reverse;">
+      <div style="position:absolute; inset:0; transform:rotateX(58deg) rotate(30deg);">
+        <div style="position:absolute; inset:0; border-radius:50%; background:conic-gradient(from 90deg, rgba(200,236,242,0), rgba(200,236,242,.5) 14%, rgba(200,236,242,0) 30%, rgba(255,46,69,.4) 56%, rgba(255,46,69,0) 72%, rgba(200,236,242,.3) 88%, rgba(200,236,242,0)); -webkit-mask:radial-gradient(closest-side, #000 20%, rgba(0,0,0,.5) 60%, transparent 100%); mask:radial-gradient(closest-side, #000 20%, rgba(0,0,0,.5) 60%, transparent 100%); filter:blur(2px); animation:galSpin 90s linear infinite reverse;"></div>
+        <div style="position:absolute; inset:40%; border-radius:50%; background:radial-gradient(closest-side, #fff, rgba(255,170,180,.6) 45%, rgba(255,60,80,0));"></div>
+      </div>
+    </div>
+  </div>
+
+  <div aria-hidden="true" style="position:fixed; inset:-50% 0 0 0; height:200%; pointer-events:none; opacity:{{ starOpacity }}; background-image:radial-gradient(1.4px 1.4px at 20px 30px, rgba(255,255,255,.95) 50%, transparent 51%), radial-gradient(1.2px 1.2px at 140px 90px, rgba(127,212,224,.9) 50%, transparent 51%), radial-gradient(1.6px 1.6px at 70px 210px, rgba(255,59,78,.85) 50%, transparent 51%), radial-gradient(1px 1px at 250px 160px, rgba(200,236,242,.7) 50%, transparent 51%); background-size:300px 300px, 380px 380px, 260px 280px, 190px 200px; animation:drift 90s linear infinite;"></div>
+  <div aria-hidden="true" style="position:fixed; inset:-50% 0 0 0; height:200%; pointer-events:none; opacity:{{ starOpacity }}; background-image:radial-gradient(2.2px 2.2px at 60px 120px, rgba(127,212,224,1) 40%, rgba(127,212,224,0) 100%), radial-gradient(2.4px 2.4px at 330px 40px, rgba(255,59,78,1) 40%, rgba(255,59,78,0) 100%), radial-gradient(1.8px 1.8px at 210px 300px, rgba(255,255,255,1) 40%, rgba(255,255,255,0) 100%); background-size:520px 480px, 640px 560px, 460px 520px; filter:drop-shadow(0 0 3px rgba(127,212,224,.8)); animation:driftSlow 140s linear infinite;"></div>
+
+  <div aria-hidden="true" style="position:fixed; inset:0; pointer-events:none; overflow:hidden; opacity:{{ cosmosOpacity }};">
+    <div style="position:absolute; left:0; right:0; top:22vh; height:1px; background:linear-gradient(90deg, transparent, rgba(127,212,224,.9), transparent); box-shadow:0 0 12px rgba(127,212,224,.8); width:24vw; animation:streak 11s cubic-bezier(.5,0,.3,1) infinite 2s;"></div>
+    <div style="position:absolute; left:0; top:58vh; height:1px; background:linear-gradient(90deg, transparent, rgba(255,59,78,.95), transparent); box-shadow:0 0 12px rgba(255,59,78,.8); width:30vw; animation:streak 14s cubic-bezier(.5,0,.3,1) infinite 6s;"></div>
+    <div style="position:absolute; left:0; top:80vh; height:1px; background:linear-gradient(90deg, transparent, rgba(200,236,242,.8), transparent); width:18vw; animation:streak 17s cubic-bezier(.5,0,.3,1) infinite 10s;"></div>
+
+    <div style="position:absolute; left:50%; top:46vh; width:min(1400px,170vw); aspect-ratio:1; border-radius:50%; border:1px solid rgba(127,212,224,.14); box-shadow:0 0 40px rgba(127,212,224,.08) inset; animation:ringSpin 160s linear infinite;">
+      <div style="position:absolute; inset:9%; border-radius:50%; border:1px dashed rgba(255,59,78,.18);"></div>
+      <div style="position:absolute; inset:-1px; border-radius:50%; background:conic-gradient(from 0deg, rgba(127,212,224,0) 0deg, rgba(127,212,224,.5) 6deg, rgba(127,212,224,0) 14deg, rgba(127,212,224,0) 180deg, rgba(255,59,78,.5) 186deg, rgba(255,59,78,0) 196deg); -webkit-mask:radial-gradient(closest-side, transparent 98.6%, #000 99.2%); mask:radial-gradient(closest-side, transparent 98.6%, #000 99.2%);"></div>
+    </div>
+
+    <div style="position:absolute; left:0; right:0; bottom:0; height:42vh; perspective:420px; perspective-origin:50% 0%; -webkit-mask-image:linear-gradient(to top, #000 0%, rgba(0,0,0,.6) 45%, transparent 100%); mask-image:linear-gradient(to top, #000 0%, rgba(0,0,0,.6) 45%, transparent 100%);">
+      <div style="position:absolute; left:-60%; right:-60%; top:0; height:220%; transform:rotateX(68deg); transform-origin:50% 0%; background-image:linear-gradient(rgba(127,212,224,.32) 1px, transparent 1px), linear-gradient(90deg, rgba(127,212,224,.22) 1px, transparent 1px); background-size:80px 80px, 80px 80px; animation:gridMove 3.2s linear infinite;"></div>
+      <div style="position:absolute; left:0; right:0; top:0; height:2px; background:linear-gradient(90deg, transparent, rgba(255,59,78,.9) 30%, rgba(255,210,214,1) 50%, rgba(255,59,78,.9) 70%, transparent); box-shadow:0 0 24px 4px rgba(224,30,55,.55); animation:horizonPulse 6s ease-in-out infinite;"></div>
+    </div>
+
+    <div style="position:absolute; left:clamp(28px, calc(50vw - 770px), 20vw); top:30vh; width:0; height:0; mix-blend-mode:screen;">
+      <div style="position:absolute; left:0; top:0; width:clamp(260px,30vw,520px); aspect-ratio:1; border-radius:50%; background:radial-gradient(closest-side, rgba(255,240,242,.55), rgba(255,59,78,.22) 30%, rgba(127,212,224,.08) 60%, transparent); animation:starPulse 7s ease-in-out infinite;"></div>
+      <div style="position:absolute; left:0; top:0; width:clamp(18px,1.6vw,28px); aspect-ratio:1; border-radius:50%; transform:translate(-50%,-50%); background:radial-gradient(closest-side, #ffffff 30%, rgba(255,226,230,.9) 55%, rgba(255,59,78,0)); box-shadow:0 0 30px 10px rgba(255,255,255,.55), 0 0 80px 30px rgba(255,59,78,.35);"></div>
+      <div style="position:absolute; left:0; top:0; width:clamp(700px,80vw,1400px); height:2px; transform:translate(-50%,-50%); background:linear-gradient(90deg, transparent, rgba(127,212,224,.35) 25%, rgba(255,255,255,.95) 50%, rgba(127,212,224,.35) 75%, transparent); filter:blur(.4px);"></div>
+      <div style="position:absolute; left:0; top:0; width:clamp(280px,26vw,460px); height:1px; transform:translate(-50%,-50%) rotate(90deg); background:linear-gradient(90deg, transparent, rgba(255,200,206,.7) 50%, transparent);"></div>
+      <div style="position:absolute; left:0; top:0; width:clamp(160px,14vw,240px); height:1px; transform:translate(-50%,-50%) rotate(45deg); background:linear-gradient(90deg, transparent, rgba(255,255,255,.4) 50%, transparent);"></div>
+      <div style="position:absolute; left:0; top:0; width:clamp(160px,14vw,240px); height:1px; transform:translate(-50%,-50%) rotate(-45deg); background:linear-gradient(90deg, transparent, rgba(255,255,255,.4) 50%, transparent);"></div>
+    </div>
+    <div style="position:absolute; inset:0; mix-blend-mode:screen; animation:flareShift 12s ease-in-out infinite;">
+      <div style="position:absolute; left:26vw; top:36vh; width:clamp(40px,4vw,70px); aspect-ratio:1; border-radius:50%; transform:translate(-50%,-50%); background:radial-gradient(closest-side, rgba(127,212,224,.0) 55%, rgba(127,212,224,.35) 80%, rgba(127,212,224,0));"></div>
+      <div style="position:absolute; left:37vw; top:42vh; width:clamp(18px,1.6vw,28px); aspect-ratio:1; border-radius:50%; transform:translate(-50%,-50%); background:rgba(255,59,78,.28); filter:blur(1px);"></div>
+      <div style="position:absolute; left:52vw; top:50vh; width:clamp(90px,8vw,140px); aspect-ratio:1; transform:translate(-50%,-50%); clip-path:polygon(25% 6%,75% 6%,100% 50%,75% 94%,25% 94%,0 50%); background:radial-gradient(closest-side, rgba(127,212,224,.14), rgba(127,212,224,.05));"></div>
+      <div style="position:absolute; left:64vw; top:57vh; width:clamp(26px,2.4vw,40px); aspect-ratio:1; border-radius:50%; transform:translate(-50%,-50%); background:radial-gradient(closest-side, rgba(255,210,214,.35), rgba(255,59,78,0));"></div>
+      <div style="position:absolute; left:80vw; top:66vh; width:clamp(150px,14vw,240px); aspect-ratio:1; border-radius:50%; transform:translate(-50%,-50%); background:radial-gradient(closest-side, transparent 70%, rgba(255,59,78,.16) 86%, rgba(127,212,224,.14) 94%, transparent);"></div>
+    </div>
+
+    <div style="position:absolute; inset:0; background:repeating-linear-gradient(0deg, rgba(127,212,224,.035) 0px, rgba(127,212,224,.035) 1px, transparent 1px, transparent 3px);"></div>
+    <div style="position:absolute; inset:0; background:radial-gradient(ellipse 90% 80% at 50% 45%, transparent 55%, rgba(3,6,8,.7) 100%);"></div>
+
+    <div style="position:absolute; left:18px; top:76px; width:28px; height:28px; border-left:1px solid rgba(127,212,224,.5); border-top:1px solid rgba(127,212,224,.5);"></div>
+    <div style="position:absolute; right:18px; top:76px; width:28px; height:28px; border-right:1px solid rgba(127,212,224,.5); border-top:1px solid rgba(127,212,224,.5);"></div>
+    <div style="position:absolute; left:18px; bottom:18px; width:28px; height:28px; border-left:1px solid rgba(255,59,78,.55); border-bottom:1px solid rgba(255,59,78,.55);"></div>
+    <div style="position:absolute; right:18px; bottom:18px; width:28px; height:28px; border-right:1px solid rgba(255,59,78,.55); border-bottom:1px solid rgba(255,59,78,.55);"></div>
+  </div>
+
+  <header style="position:sticky; top:0; z-index:50; padding:14px 0; backdrop-filter:{{ navBlur }}; background:{{ navBg }}; borderBottom:1px solid {{ navBorder }}; transition:background .35s ease, border-color .35s ease;">
+    <nav style="max-width:1240px; margin:0 auto; padding:0 28px; display:flex; align-items:center; gap:28px;">
+      <a href="#top" style="display:flex; align-items:center; gap:12px; color:#fff;">
+        <span style="position:relative; width:30px; height:30px; display:grid; place-items:center;">
+          <span style="position:absolute; inset:0; border-radius:50%; border:1px solid rgba(224,30,55,.7); box-shadow:0 0 18px rgba(224,30,55,.6);"></span>
+          <span style="position:absolute; inset:-5px 2px; border-radius:50%; border:1px solid rgba(127,212,224,.35); transform:rotate(32deg);"></span>
+          <span style="width:11px; height:11px; border-radius:50%; background:linear-gradient(140deg,#e8f4f6,#ff2e45); box-shadow:0 0 16px rgba(255,70,90,.9);"></span>
+        </span>
+        <span style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:17px; letter-spacing:.16em; text-transform:uppercase;">Solarian</span>
+      </a>
+      <div style="flex:1; display:flex; justify-content:center; gap:30px; flex-wrap:wrap;">
+        <a href="#videos" style="color:rgba(232,236,248,.72); font-size:14px; letter-spacing:.04em;" style-hover="color:#fff">Videos</a>
+        <a href="#about" style="color:rgba(232,236,248,.72); font-size:14px; letter-spacing:.04em;" style-hover="color:#fff">About</a>
+      </div>
+      <a href="https://www.youtube.com/@SolarianNetwork?sub_confirmation=1" target="_blank" rel="noopener" style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:11px 20px; border-radius:999px; background:linear-gradient(120deg,#ff3b4e,#c8142c); box-shadow:0 0 26px rgba(224,30,55,.5); white-space:nowrap; transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-2px) scale(1.03); box-shadow:0 0 40px rgba(127,212,224,.65)">{{ ctaLabel }}</a>
+    </nav>
+  </header>
+
+  <section id="top" style="position:relative; padding:40px 28px 48px; text-align:center;">
+    <div aria-hidden="true" style="position:absolute; left:50%; top:38%; width:min(760px,120vw); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; background:radial-gradient(circle at 42% 38%, rgba(200,236,242,.28), rgba(224,30,55,.22) 42%, rgba(4,6,15,0) 70%); filter:blur(6px); animation:breathe 9s ease-in-out infinite;"></div>
+    <div aria-hidden="true" style="position:absolute; left:50%; top:38%; width:min(520px,86vw); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:1px solid rgba(127,212,224,.16);"></div>
+    <div aria-hidden="true" style="position:absolute; left:50%; top:38%; width:min(700px,104vw); aspect-ratio:1; transform:translate(-50%,-50%); border-radius:50%; border:1px dashed rgba(255,59,78,.14); animation:orbspin 60s linear infinite;"></div>
+    <div style="position:relative; max-width:1180px; margin:0 auto; display:flex; flex-direction:column; align-items:center; gap:22px;">
+      
+      <div data-reveal aria-hidden="true" style="position:relative; display:flex; flex-direction:column; align-items:center; gap:10px; margin:4px 0 -4px;">
+        <div style="font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(30px,6.4vw,84px); line-height:1; letter-spacing:.14em; text-transform:uppercase; padding-left:.14em; background:linear-gradient(100deg,#ff3b4e 0%,#ffd2d6 22%,#7fd4e0 44%,#e01e37 66%,#c8ecf2 84%,#ff3b4e 100%); background-size:200% 100%; -webkit-background-clip:text; background-clip:text; color:transparent; animation:titleSheen 9s linear infinite; filter:drop-shadow(0 0 22px rgba(224,30,55,.45)) drop-shadow(0 0 48px rgba(127,212,224,.25));">Solarian</div>
+        <div style="display:flex; align-items:center; gap:16px; width:100%; max-width:640px;">
+          <span style="flex:1; height:1px; background:linear-gradient(90deg,transparent,rgba(255,59,78,.8));"></span>
+          <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:clamp(13px,1.6vw,20px); letter-spacing:.7em; padding-left:.7em; text-transform:uppercase; color:#7fd4e0; text-shadow:0 0 18px rgba(127,212,224,.6);">Network</span>
+          <span style="flex:1; height:1px; background:linear-gradient(90deg,rgba(127,212,224,.8),transparent);"></span>
+        </div>
+      </div>
+      <h1 data-reveal style="position:relative; margin:0; width:min(1400px, calc(100vw - 48px)); max-width:none; flex-shrink:0; font-size:0; line-height:0;"><span style="position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0);">Solarian Network</span><sc-if value="{{ cd.counting }}" hint-placeholder-val="{{ true }}"><video src="assets/hero-video.mp4" poster="assets/hero-nebula.jpg" autoplay="{{ true }}" muted="{{ heroMuted }}" loop="{{ true }}" playsInline="{{ true }}" ref="{{ heroVideoRef }}" preload="auto" aria-hidden="true" style="display:block; width:100%; height:auto; aspect-ratio:16/9; object-fit:cover; -webkit-mask-image:radial-gradient(ellipse 72% 68% at 50% 50%, #000 58%, transparent 100%); mask-image:radial-gradient(ellipse 72% 68% at 50% 50%, #000 58%, transparent 100%);"></video><button type="button" onClick="{{ toggleSound }}" aria-label="{{ soundLabel }}" style="position:absolute; right:7%; bottom:9%; display:flex; align-items:center; gap:8px; font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:12px; line-height:1; letter-spacing:.14em; text-transform:uppercase; color:#e8ecf8; padding:12px 18px; border-radius:999px; border:1px solid rgba(127,212,224,.4); background:rgba(4,6,15,.55); backdrop-filter:blur(8px); cursor:pointer; transition:border-color .25s ease, box-shadow .25s ease;" style-hover="border-color:rgba(127,212,224,.8); box-shadow:0 0 24px rgba(127,212,224,.35)">{{ soundLabel }}</button></sc-if><sc-if value="{{ cd.live }}" hint-placeholder-val="{{ false }}"><div style="position:relative; width:100%; aspect-ratio:16/9; border-radius:18px; overflow:hidden; border:1px solid rgba(127,212,224,.35); background:#000; box-shadow:0 0 0 1px rgba(255,59,78,.18), 0 30px 120px rgba(224,30,55,.35), 0 0 80px rgba(127,212,224,.18);"><iframe src="{{ cd.embedSrc }}" title="Humanity's Last Invention" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowFullScreen="{{ true }}" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe></div></sc-if></h1>
+      <div data-reveal style="display:flex; flex-direction:column; align-items:center; gap:16px; margin-top:4px;">
+        <div style="display:flex; align-items:center; gap:10px; font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:13px; letter-spacing:.3em; padding-left:.3em; text-transform:uppercase; color:#ff6b7a;">
+          <span style="width:8px; height:8px; border-radius:50%; background:#ff3b4e; box-shadow:0 0 12px #ff3b4e; animation:horizonPulse 1.6s ease-in-out infinite;"></span>
+          <span>{{ cd.heading }}</span>
+        </div>
+        <h2 style="margin:0; font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(22px,3.6vw,46px); line-height:1.1; letter-spacing:.12em; padding-left:.12em; text-transform:uppercase; color:#fff; text-wrap:balance; text-shadow:0 0 24px rgba(224,30,55,.55), 0 0 60px rgba(127,212,224,.25);">Humanity's Last Invention</h2>
+        <sc-if value="{{ cd.live }}" hint-placeholder-val="{{ false }}">
+          <a href="{{ cd.watchUrl }}" target="_blank" rel="noopener" style="display:inline-flex; align-items:center; gap:14px; font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(16px,2.2vw,26px); letter-spacing:.16em; padding:20px 40px 20px 34px; border-radius:999px; color:#fff; background:linear-gradient(120deg,#ff3b4e,#c8142c); box-shadow:0 0 0 1px rgba(255,210,214,.35) inset, 0 14px 50px rgba(224,30,55,.6); transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px) scale(1.03); box-shadow:0 0 0 1px rgba(255,255,255,.5) inset, 0 18px 70px rgba(127,212,224,.6)"><span style="width:0; height:0; border-left:14px solid #fff; border-top:9px solid transparent; border-bottom:9px solid transparent;"></span>Watch the Film</a>
+        </sc-if>
+        <sc-if value="{{ cd.counting }}" hint-placeholder-val="{{ true }}">
+          <div style="display:flex; align-items:stretch; gap:clamp(8px,1.4vw,18px); flex-wrap:wrap; justify-content:center;">
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:clamp(64px,9vw,112px); padding:clamp(12px,1.6vw,20px) clamp(10px,1.4vw,18px); border:1px solid rgba(255,59,78,.4); border-radius:14px; background:rgba(4,8,12,.55); backdrop-filter:blur(8px);">
+            <span style="font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(26px,4.2vw,54px); line-height:1; letter-spacing:.04em; color:#fff; font-variant-numeric:tabular-nums; text-shadow:0 0 18px rgba(127,212,224,.55);">{{ cd.d }}</span>
+            <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; padding-left:.28em; text-transform:uppercase; color:rgba(232,236,248,.7);">Days</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:clamp(64px,9vw,112px); padding:clamp(12px,1.6vw,20px) clamp(10px,1.4vw,18px); border:1px solid rgba(127,212,224,.35); border-radius:14px; background:rgba(4,8,12,.55); backdrop-filter:blur(8px);">
+            <span style="font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(26px,4.2vw,54px); line-height:1; letter-spacing:.04em; color:#fff; font-variant-numeric:tabular-nums; text-shadow:0 0 18px rgba(127,212,224,.55);">{{ cd.h }}</span>
+            <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; padding-left:.28em; text-transform:uppercase; color:rgba(232,236,248,.7);">Hours</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:clamp(64px,9vw,112px); padding:clamp(12px,1.6vw,20px) clamp(10px,1.4vw,18px); border:1px solid rgba(127,212,224,.35); border-radius:14px; background:rgba(4,8,12,.55); backdrop-filter:blur(8px);">
+            <span style="font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(26px,4.2vw,54px); line-height:1; letter-spacing:.04em; color:#fff; font-variant-numeric:tabular-nums; text-shadow:0 0 18px rgba(127,212,224,.55);">{{ cd.m }}</span>
+            <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; padding-left:.28em; text-transform:uppercase; color:rgba(232,236,248,.7);">Minutes</span>
+          </div>
+          <div style="display:flex; flex-direction:column; align-items:center; gap:8px; min-width:clamp(64px,9vw,112px); padding:clamp(12px,1.6vw,20px) clamp(10px,1.4vw,18px); border:1px solid rgba(255,59,78,.4); border-radius:14px; background:rgba(4,8,12,.55); backdrop-filter:blur(8px);">
+            <span style="font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(26px,4.2vw,54px); line-height:1; letter-spacing:.04em; color:#fff; font-variant-numeric:tabular-nums; text-shadow:0 0 18px rgba(127,212,224,.55);">{{ cd.s }}</span>
+            <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:11px; letter-spacing:.28em; padding-left:.28em; text-transform:uppercase; color:rgba(232,236,248,.7);">Seconds</span>
+          </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ cd.counting }}" hint-placeholder-val="{{ true }}"><span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:clamp(12px,1.3vw,15px); letter-spacing:.24em; padding-left:.24em; text-transform:uppercase; color:#7fd4e0; text-align:center; text-wrap:balance; text-shadow:0 0 14px rgba(127,212,224,.45);">Premieres Saturday, October 24 at 8 PM Eastern Time</span></sc-if>
+      </div>
+      <p data-reveal style="max-width:620px; margin:0; font-size:clamp(16px,1.6vw,19px); line-height:1.6; color:rgba(232,236,248,.66); text-wrap:pretty;">Cinematic journeys through the cosmos — black holes, alien megastructures, the moons of Jupiter, and the mysteries in between.</p>
+      <div data-reveal style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center; margin-top:6px;">
+        <a href="#videos" style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:#fff; padding:15px 30px; border-radius:999px; background:linear-gradient(120deg,#ff3b4e,#c8142c); box-shadow:0 10px 40px rgba(224,30,55,.45); transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px) scale(1.03); box-shadow:0 14px 54px rgba(127,212,224,.6)">Watch the Videos</a>
+        <a href="https://www.youtube.com/@SolarianNetwork" target="_blank" rel="noopener" style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:14px; letter-spacing:.08em; text-transform:uppercase; color:#e8ecf8; padding:15px 30px; border-radius:999px; border:1px solid rgba(232,236,248,.22); background:rgba(255,255,255,.04); transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px); border-color:rgba(127,212,224,.6); box-shadow:0 0 30px rgba(127,212,224,.25)">Watch on YouTube</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos" style="position:relative; padding:40px 28px 100px; max-width:1240px; margin:0 auto;">
+    <div data-reveal style="display:flex; align-items:flex-end; justify-content:space-between; gap:24px; flex-wrap:wrap; margin-bottom:44px;">
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span style="font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#7fd4e0;">01 — From the channel</span>
+        <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(32px,4.2vw,52px); margin:0; letter-spacing:-.01em;">Solarian Network Videos</h2>
+      </div>
+      <a href="https://www.youtube.com/@SolarianNetwork" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:10px; font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:14px 24px; border-radius:999px; background:#ff0033; box-shadow:0 10px 34px rgba(255,0,51,.35); transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px); box-shadow:0 14px 44px rgba(255,0,51,.55)">Subscribe on YouTube</a>
+    </div>
+    <div style="display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:22px;">
+      <sc-for list="{{ videos }}" as="v" hint-placeholder-count="6">
+        <a href="{{ v.href }}" target="_blank" rel="noopener" onClick="{{ v.play }}" style="display:flex; flex-direction:column; border-radius:18px; overflow:hidden; border:1px solid rgba(232,236,248,.09); background:rgba(8,10,26,.6); transition:transform .3s ease, box-shadow .3s ease, border-color .3s ease;" style-hover="transform:translateY(-6px); border-color:rgba(255,0,51,.5); box-shadow:0 16px 44px rgba(255,0,51,.22)">
+          <div style="position:relative; aspect-ratio:16/9; background:#0b0d1c; display:grid; place-items:center;">
+            <img src="{{ v.thumb }}" alt="{{ v.title }}" loading="lazy" style="position:absolute; inset:0; width:100%; height:100%; object-fit:cover;">
+            <span style="position:relative; width:54px; height:54px; border-radius:50%; background:rgba(255,0,51,.92); display:grid; place-items:center; box-shadow:0 0 26px rgba(255,0,51,.6);"><span style="width:0; height:0; border-left:16px solid #fff; border-top:10px solid transparent; border-bottom:10px solid transparent; margin-left:4px;"></span></span>
+          </div>
+          <div style="padding:18px 20px; display:flex; flex-direction:column; gap:8px; flex:1;">
+            <span style="font-size:16px; font-weight:500; color:#fff; line-height:1.35; text-wrap:pretty;">{{ v.title }}</span>
+            <span style="font-size:13px; color:rgba(232,236,248,.5);">Watch on YouTube</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+
+    <sc-if value="{{ playerOpen }}" hint-placeholder-val="{{ false }}">
+      <div onClick="{{ closePlayer }}" style="position:fixed; inset:0; z-index:200; display:flex; align-items:center; justify-content:center; padding:24px; background:rgba(3,4,11,.86); backdrop-filter:blur(14px) saturate(130%);">
+        <div onClick="{{ stopBubble }}" style="position:relative; width:100%; max-width:1000px; display:flex; flex-direction:column; gap:20px;">
+          <button type="button" onClick="{{ closePlayer }}" aria-label="Close video" style="position:absolute; top:-46px; right:0; width:36px; height:36px; border-radius:50%; border:1px solid rgba(232,236,248,.2); background:rgba(255,255,255,.06); color:#e8ecf8; font-size:16px; line-height:1; cursor:pointer; display:grid; place-items:center;" style-hover="border-color:#ff0033; color:#fff; background:rgba(255,0,51,.18)">✕</button>
+          <div style="position:relative; aspect-ratio:16/9; width:100%; border-radius:18px; overflow:hidden; border:1px solid rgba(232,236,248,.12); background:#000; box-shadow:0 40px 120px rgba(224,30,55,.35);">
+            <iframe src="{{ playerSrc }}" title="Solarian Network video" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" allowFullScreen="{{ true }}" style="position:absolute; inset:0; width:100%; height:100%; border:0;"></iframe>
+          </div>
+          <div style="display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+            <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:clamp(18px,2.4vw,24px); color:#fff;">{{ playerTitle }}</span>
+            <a href="{{ playerHref }}" target="_blank" rel="noopener" style="display:flex; align-items:center; gap:10px; font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:14px 26px; border-radius:999px; background:#ff0033; box-shadow:0 10px 34px rgba(255,0,51,.4); transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px); box-shadow:0 14px 44px rgba(255,0,51,.6)">Watch on YouTube</a>
+          </div>
+        </div>
+      </div>
+    </sc-if>
+  </section>
+
+  <section id="about" style="position:relative; padding:100px 28px; max-width:1240px; margin:0 auto;">
+    <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:56px; align-items:center;">
+      <div data-reveal style="display:flex; flex-direction:column; gap:20px;">
+        <span style="font-size:12px; letter-spacing:.28em; text-transform:uppercase; color:#ff3b4e;">02 — The story</span>
+        <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(30px,3.8vw,46px); margin:0; letter-spacing:-.01em; text-wrap:balance;">What is Solarian Network?</h2>
+        <p style="margin:-4px 0 4px; font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:clamp(17px,1.8vw,21px); letter-spacing:.06em; background:linear-gradient(100deg,#ff6b7a,#7fd4e0); -webkit-background-clip:text; background-clip:text; color:transparent;">Beyond Imagination. Beyond Reality.</p>
+        <p style="margin:0; font-size:17px; line-height:1.7; color:rgba(232,236,248,.7); text-wrap:pretty;">Solarian Network is a cinematic creative platform exploring technology, artificial intelligence, science, history, and the future of humanity.</p>
+        <p style="margin:0; font-size:17px; line-height:1.7; color:rgba(232,236,248,.7); text-wrap:pretty;">We believe extraordinary storytelling should never be limited to a single technology or technique.</p>
+        <p style="margin:0; font-size:17px; line-height:1.7; color:rgba(232,236,248,.7); text-wrap:pretty;">From traditional filmmaking and time-honored practical effects to modern visual effects and cutting-edge artificial intelligence, we embrace every creative tool within our reach to produce the most spectacular films and immersive cinematic experiences possible.</p>
+        <p style="margin:0; font-size:17px; line-height:1.7; color:rgba(232,236,248,.7); text-wrap:pretty;">Our mission is simple: use whatever techniques best serve the story, push the boundaries of imagination, and create films that entertain, inspire, and leave audiences in awe.</p>
+        <p style="margin:6px 0; padding:18px 0; border-top:1px solid rgba(255,59,78,.3); border-bottom:1px solid rgba(127,212,224,.25); font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:clamp(19px,2vw,24px); line-height:1.45; color:#fff; text-wrap:balance;">At Solarian Network, technology is the tool. Human imagination is the driving force.</p>
+        <p style="margin:0; font-size:17px; line-height:1.7; color:rgba(232,236,248,.7); text-wrap:pretty;">And the next frontier of storytelling begins here.</p>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-top:4px;">
+          <span style="font-family:'Syncopate',sans-serif; font-weight:700; font-size:clamp(16px,1.7vw,20px); letter-spacing:.18em; text-transform:uppercase; color:#fff; text-shadow:0 0 18px rgba(224,30,55,.5);">Solarian Network</span>
+          <span style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:13px; letter-spacing:.26em; text-transform:uppercase; color:#7fd4e0;">Where Imagination Knows No Limits.</span>
+        </div>
+        <div style="display:flex; gap:12px; flex-wrap:wrap; margin-top:10px;">
+          <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,236,248,.6); padding:9px 16px; border-radius:999px; border:1px solid rgba(232,236,248,.16);">Technology</span>
+          <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,236,248,.6); padding:9px 16px; border-radius:999px; border:1px solid rgba(232,236,248,.16);">Artificial intelligence</span>
+          <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,236,248,.6); padding:9px 16px; border-radius:999px; border:1px solid rgba(232,236,248,.16);">Science &amp; history</span>
+          <span style="font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:rgba(232,236,248,.6); padding:9px 16px; border-radius:999px; border:1px solid rgba(232,236,248,.16);">Future of humanity</span>
+        </div>
+      </div>
+      <div data-reveal style="position:relative; aspect-ratio:1; display:grid; place-items:center;">
+        <span style="position:absolute; width:96%; aspect-ratio:1; border-radius:50%; border:1px solid rgba(255,59,78,.22);"></span>
+        <span style="position:absolute; width:70%; aspect-ratio:1; border-radius:50%; border:1px dashed rgba(127,212,224,.24); animation:orbspin 42s linear infinite;"></span>
+        <span style="position:absolute; width:44%; aspect-ratio:1; border-radius:50%; border:1px solid rgba(200,236,242,.24);"></span>
+        <span style="width:26%; aspect-ratio:1; border-radius:50%; background:radial-gradient(circle at 38% 34%, #ffffff, #ff2e45 55%, #e01e37); box-shadow:0 0 70px rgba(255,70,90,.55);"></span>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" style="padding:0 28px 100px;">
+    <div data-reveal style="position:relative; max-width:1240px; margin:0 auto; overflow:hidden; border-radius:28px; padding:clamp(48px,7vw,84px) 32px; text-align:center; background:linear-gradient(120deg,#0e3e46,#2a7f8c 30%,#b3142a 68%,#ff3b4e); box-shadow:0 30px 90px rgba(224,30,55,.4);">
+      <div aria-hidden="true" style="position:absolute; inset:0; background:radial-gradient(60% 120% at 50% 120%, rgba(255,255,255,.28), rgba(255,255,255,0) 70%);"></div>
+      <div style="position:relative; display:flex; flex-direction:column; align-items:center; gap:22px;">
+        <h2 style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:clamp(34px,5.4vw,64px); margin:0; letter-spacing:-.02em; color:#fff;">Join the Network</h2>
+        <p style="margin:0; max-width:520px; font-size:17px; line-height:1.6; color:rgba(255,255,255,.86);">Subscribe for new journeys through the cosmos.</p>
+        <div style="display:flex; gap:14px; flex-wrap:wrap; justify-content:center;">
+          <a href="https://www.youtube.com/@SolarianNetwork?sub_confirmation=1" target="_blank" rel="noopener" style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:16px 32px; border-radius:999px; background:#0a0608; transition:transform .25s ease, box-shadow .25s ease;" style-hover="transform:translateY(-3px) scale(1.03); box-shadow:0 14px 40px rgba(10,6,8,.5)">Subscribe on YouTube</a>
+          <a href="#videos" style="font-family:'Chakra Petch',sans-serif; font-weight:600; font-size:14px; letter-spacing:.1em; text-transform:uppercase; color:#fff; padding:16px 32px; border-radius:999px; border:1px solid rgba(255,255,255,.7); transition:transform .25s ease, background .25s ease;" style-hover="transform:translateY(-3px); background:rgba(255,255,255,.42)">Watch the Videos</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer style="border-top:1px solid rgba(232,236,248,.08); background:rgba(3,4,11,.7);">
+    <div style="max-width:1240px; margin:0 auto; padding:56px 28px 32px; display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:40px;">
+      <div style="display:flex; flex-direction:column; gap:14px;">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <span style="position:relative; width:26px; height:26px; display:grid; place-items:center;">
+            <span style="position:absolute; inset:0; border-radius:50%; border:1px solid rgba(224,30,55,.7);"></span>
+            <span style="width:9px; height:9px; border-radius:50%; background:linear-gradient(140deg,#e8f4f6,#ff2e45); box-shadow:0 0 14px rgba(255,70,90,.8);"></span>
+          </span>
+          <span style="font-family:'Chakra Petch',sans-serif; font-weight:700; font-size:15px; letter-spacing:.16em; text-transform:uppercase; color:#fff;">Solarian</span>
+        </div>
+        <p style="margin:0; font-size:14px; line-height:1.6; color:rgba(232,236,248,.5); max-width:280px;">Cinematic journeys through the cosmos.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span style="font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(232,236,248,.38);">Explore</span>
+        <a href="#videos" style="font-size:14px; color:rgba(232,236,248,.72);" style-hover="color:#fff">Videos</a>
+        <a href="#about" style="font-size:14px; color:rgba(232,236,248,.72);" style-hover="color:#fff">About</a>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:12px;">
+        <span style="font-size:11px; letter-spacing:.24em; text-transform:uppercase; color:rgba(232,236,248,.38);">Follow</span>
+        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+          <a href="#top" style="width:40px; height:40px; border-radius:12px; border:1px solid rgba(232,236,248,.14); display:grid; place-items:center; font-size:13px; color:rgba(232,236,248,.7);" style-hover="border-color:#7fd4e0; color:#fff">X</a>
+          <a href="#top" style="width:40px; height:40px; border-radius:12px; border:1px solid rgba(232,236,248,.14); display:grid; place-items:center; font-size:11px; letter-spacing:.04em; color:rgba(232,236,248,.7);" style-hover="border-color:#ff3b4e; color:#fff">DC</a>
+          <a href="#top" style="width:40px; height:40px; border-radius:12px; border:1px solid rgba(232,236,248,.14); display:grid; place-items:center; font-size:11px; color:rgba(232,236,248,.7);" style-hover="border-color:#7fd4e0; color:#fff">TG</a>
+          <a href="https://www.youtube.com/@SolarianNetwork" target="_blank" rel="noopener" style="width:40px; height:40px; border-radius:12px; border:1px solid rgba(232,236,248,.14); display:grid; place-items:center; font-size:11px; color:rgba(232,236,248,.7);" style-hover="border-color:#ff0033; color:#fff">YT</a>
+        </div>
+      </div>
+    </div>
+    <div style="max-width:1240px; margin:0 auto; padding:0 28px 40px; font-size:12px; color:rgba(232,236,248,.34);">© 2026 Solarian Network. All rights reserved.</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;ctaLabel&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Subscribe&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;starfield&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;nebulas&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;},&quot;glow&quot;:{&quot;editor&quot;:&quot;range&quot;,&quot;default&quot;:1,&quot;min&quot;:0.4,&quot;max&quot;:1.6,&quot;step&quot;:0.1,&quot;tsType&quot;:&quot;number&quot;}}">
+class Component extends DCLogic {
+  state = { scrolled: false, video: null, now: Date.now() };
+  premiereAt = Date.parse('2026-10-25T00:00:00Z');
+  filmId = '2anW0ohHusA';
+
+  open(id, title) {
+    return (e) => {
+      if (e) e.preventDefault();
+      document.body.style.overflow = 'hidden';
+      this.setState({ video: { id, title } });
+    };
+  }
+
+  close = (e) => {
+    if (e) e.preventDefault();
+    document.body.style.overflow = '';
+    this.setState({ video: null });
+  };
+
+  heroVideoRef = (el) => {
+    if (el && el !== this._hv) {
+      this._hv = el;
+      el.muted = true; el.loop = true; el.playsInline = true;
+      const p = el.play && el.play(); if (p && p.catch) p.catch(() => {});
+    }
+  };
+
+  componentDidMount() {
+    this._cdTimer = setInterval(() => this.setState({ now: Date.now() }), 1000);
+    const left = this.premiereAt - Date.now();
+    if (left > 0 && left < 2147483647) this._cdRelease = setTimeout(() => this.setState({ now: Date.now() }), left + 20);
+    this._cdVis = () => this.setState({ now: Date.now() });
+    document.addEventListener('visibilitychange', this._cdVis);
+    window.addEventListener('focus', this._cdVis);
+    this.onScroll = () => {
+      const s = window.scrollY > 24;
+      if (s !== this.state.scrolled) this.setState({ scrolled: s });
+    };
+    window.addEventListener('scroll', this.onScroll, { passive: true });
+    this.onKey = (e) => { if (e.key === 'Escape' && this.state.video) this.close(); };
+    window.addEventListener('keydown', this.onKey);
+    this.onScroll();
+    this.setupReveal();
+  }
+
+  componentWillUnmount() {
+    clearInterval(this._cdTimer); clearTimeout(this._cdRelease); document.removeEventListener('visibilitychange', this._cdVis); window.removeEventListener('focus', this._cdVis);
+    window.removeEventListener('scroll', this.onScroll);
+    window.removeEventListener('keydown', this.onKey);
+    document.body.style.overflow = '';
+    if (this.io) this.io.disconnect();
+  }
+
+  setupReveal() {
+    const show = (el) => {
+      el.style.opacity = '1';
+      el.style.transform = 'none';
+    };
+    const els = Array.from(document.querySelectorAll('[data-reveal]'));
+    els.forEach((el, i) => {
+      el.style.opacity = '0';
+      el.style.transform = 'translateY(26px)';
+      el.style.transition = 'opacity .7s cubic-bezier(.2,.7,.2,1) ' + ((i % 4) * 0.08) + 's, transform .7s cubic-bezier(.2,.7,.2,1) ' + ((i % 4) * 0.08) + 's';
+    });
+    if (!('IntersectionObserver' in window)) { els.forEach(show); return; }
+    this.io = new IntersectionObserver((entries) => {
+      entries.forEach((e) => {
+        if (e.isIntersecting) { show(e.target); this.io.unobserve(e.target); }
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0.08 });
+    els.forEach((el) => this.io.observe(el));
+    setTimeout(() => els.forEach((el) => { if (el.getBoundingClientRect().top < window.innerHeight) show(el); }), 900);
+  }
+
+  renderVals() {
+    const s = this.state.scrolled;
+    const glow = this.props.glow ?? 1;
+    const v = this.state.video;
+    return {
+      heroVideoRef: this.heroVideoRef,
+      cd: (() => {
+        const ms = Math.max(0, this.premiereAt - this.state.now);
+        const t = Math.floor(ms / 1000), p = (n) => String(n).padStart(2, '0');
+        const live = ms === 0;
+        return { live, counting: !live, heading: live ? 'Now Showing' : 'World Premiere', embedSrc: live ? 'https://www.youtube.com/embed/' + this.filmId + '?rel=0&playsinline=1' : '', watchUrl: live ? 'https://youtu.be/' + this.filmId : undefined, d: p(Math.floor(t / 86400)), h: p(Math.floor(t % 86400 / 3600)), m: p(Math.floor(t % 3600 / 60)), s: p(t % 60) };
+      })(),
+      heroMuted: !this.state.soundOn,
+      soundLabel: this.state.soundOn ? 'Mute' : 'Unmute',
+      toggleSound: () => {
+        const on = !this.state.soundOn;
+        const el = this._hv;
+        if (el) { el.muted = !on; if (on) { el.volume = 1; const p = el.play(); if (p && p.catch) p.catch(() => {}); } }
+        this.setState({ soundOn: on });
+      },
+      playerOpen: !!v,
+      playerSrc: v ? 'https://www.youtube.com/embed/' + v.id + '?autoplay=1&rel=0&playsinline=1' : '',
+      playerTitle: v ? v.title : '',
+      playerHref: v ? 'https://www.youtube.com/watch?v=' + v.id : 'https://www.youtube.com/@SolarianNetwork',
+      closePlayer: this.close,
+      stopBubble: (e) => e.stopPropagation(),
+      videos: [["I4MLi1yAc3I","Alien Megastructures: The Dyson Sphere"],["DfF93pGRwjg","Are Asteroids Comets?"],["ASEU7orcwvI","Black Hole"],["IdpkUAzPe08","We Are All Stardust"],["MVDqEtYcT4Y","Exploring Pluto: Heart of the Kuiper Belt"],["N8InI8NFDOI","A Spectacle in the Skies: The Great Red Spot of Jupiter"],["zWviduhOG1o","The Chicxulub Event: The Catastrophic Impact that Killed off the Dinosaurs!"],["OuMBRKionLI","Exploring the Hollow Moon Theory: What They Don't Want You to Know"],["VvP7_FVzroE","Our Solar System Might Be a Single Atom!"],["jsF6wygnxKU","Life on Jupiter's Moons"]].map(([id, title]) => ({ id, title, href: 'https://www.youtube.com/watch?v=' + id, thumb: 'https://i.ytimg.com/vi/' + id + '/hqdefault.jpg', play: this.open(id, title) })),
+      ctaLabel: this.props.ctaLabel ?? 'Subscribe',
+      starOpacity: (this.props.starfield ?? true) ? 0.55 * glow : 0,
+      cosmosOpacity: (this.props.nebulas ?? true) ? Math.min(1, 0.85 * glow) : 0,
+      navBg: s ? 'rgba(6,8,20,.72)' : 'transparent',
+      navBlur: s ? 'blur(18px) saturate(140%)' : 'none',
+      navBorder: s ? 'rgba(232,236,248,.1)' : 'transparent'
+    };
+  }
+}
+</script>
+</body>
+</html>
